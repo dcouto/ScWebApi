@@ -1,0 +1,65 @@
+----item----
+version: 1
+id: {BD3F5B47-5E27-4CE4-8042-6EFE69F9D095}
+database: master
+path: /sitecore/templates/ScWebApi/Pages/Importer Page/__Standard Values
+parent: {26632C3B-28AA-4293-B093-AB30597410F0}
+name: __Standard Values
+master: {00000000-0000-0000-0000-000000000000}
+template: {26632C3B-28AA-4293-B093-AB30597410F0}
+templatekey: Importer Page
+
+----field----
+field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
+name: __Renderings
+key: __renderings
+content-length: 251
+
+<r xmlns:xsd="http://www.w3.org/2001/XMLSchema" ><d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{D934E9AA-6249-4059-BC00-E20C2FAC4043}"><r id="{D816147F-4739-4E23-BB1C-2D0E24BDF11A}" ph="Main" uid="{057696CA-5B4B-4AD9-BE89-FB4A940ED23C}" /></d></r>
+----version----
+language: en
+version: 1
+revision: e7dd774c-5d1a-469b-8153-aca5cec4005a
+
+----field----
+field: {1BB4A2A9-D818-48B9-A175-76420A836531}
+name: Product Categories Folder
+key: product categories folder
+content-length: 38
+
+{BB837D96-850F-448E-84ED-AFB169A929F0}
+----field----
+field: {EB284BB6-5749-43F0-8FE4-81056A325057}
+name: Products Landing Page
+key: products landing page
+content-length: 38
+
+{D133C044-DB65-4013-9FC3-94D7FB63A566}
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20160212T191110Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+e7dd774c-5d1a-469b-8153-aca5cec4005a
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20160212T205216Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

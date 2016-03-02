@@ -1,0 +1,51 @@
+----item----
+version: 1
+id: {7C6945F7-EED6-4DEC-B842-B73B52F6B704}
+database: master
+path: /sitecore/templates/ScWebApi/Shared Content/Items/Base/Base Named Imported Content/__Standard Values
+parent: {63B33824-C0CD-41F5-95D1-5B8F4E76B603}
+name: __Standard Values
+master: {00000000-0000-0000-0000-000000000000}
+template: {63B33824-C0CD-41F5-95D1-5B8F4E76B603}
+templatekey: Base Named Imported Content
+
+----version----
+language: en
+version: 1
+revision: 3df2457b-5617-4bb8-b93d-84f593f3e113
+
+----field----
+field: {7446C4D9-01E7-406C-98D0-8A123AE10C02}
+name: Legacy Name
+key: legacy name
+content-length: 5
+
+$name
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20160212T155007Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+3df2457b-5617-4bb8-b93d-84f593f3e113
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20160212T155016Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
