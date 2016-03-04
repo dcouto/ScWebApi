@@ -59,7 +59,7 @@ namespace <#=fullNamespace #>
         string Url { get;}
 
 		[SitecoreInfo(SitecoreInfoType.Name)]
-        string Name { get;}
+        string Name { get; set; }
 
 		[SitecoreField("__Sortorder")]
         int Sortorder { get;}
@@ -107,7 +107,7 @@ namespace <#=fullNamespace #>
         public virtual string Url { get; private set; }
 
 		[SitecoreInfo(SitecoreInfoType.Name)]
-        public virtual string Name { get; private set; }
+        public virtual string Name { get; set; }
 
 		[SitecoreField("__Sortorder")]
         public virtual int Sortorder { get; private set; }
