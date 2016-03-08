@@ -3,7 +3,7 @@ using System.Linq;
 using ScWebApi.Domain.Common;
 using ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items;
 using Sitecore.Services.Core;
-using Product = ScWebApi.Repositories.Models.SitecoreEntityService.Product;
+using Product = ScWebApi.Repository.Models.SitecoreEntityService.Product;
 
 namespace ScWebApi.Repositories.DALs.SitecoreEntityService
 {

@@ -248,6 +248,10 @@
       <Project>{97943b04-50b7-4d64-990e-79aada8e1a2e}</Project>
       <Name>ScWebApi.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ScWebApi.Repository.Models\ScWebApi.Repository.Models.csproj">
+      <Project>{04e672c0-0e90-41af-9fd5-70988e22fd1a}</Project>
+      <Name>ScWebApi.Repository.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

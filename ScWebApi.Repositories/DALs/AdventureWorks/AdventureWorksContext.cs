@@ -1,9 +1,10 @@
-using ScWebApi.Repositories.Models.AdventureWorks;
+using ScWebApi.Repository.Models.AdventureWorks;
 using System.Data.Entity;
+using ScWebApi.Repository.Interfaces.DALs.AdventureWorks;
 
 namespace ScWebApi.Repositories.DALs.AdventureWorks
 {
-    public partial class AdventureWorksContext : DbContext
+    public partial class AdventureWorksContext : DbContext, IAdventureWorksContext
     {
         public AdventureWorksContext() : base("name=AdventureWorksContext")
         {

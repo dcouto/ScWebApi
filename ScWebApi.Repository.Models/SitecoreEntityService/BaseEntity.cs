@@ -1,6 +1,6 @@
 ﻿using Sitecore.Services.Core.Model;
 
-namespace ScWebApi.Repositories.Models.SitecoreEntityService
+namespace ScWebApi.Repository.Models.SitecoreEntityService
 {
     public class BaseEntity : EntityIdentity
     {

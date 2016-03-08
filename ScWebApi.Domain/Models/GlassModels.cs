@@ -23,7 +23,6 @@ using Glass.Mapper.Sc.Configuration.Attributes;
 using Glass.Mapper.Sc.Configuration;
 using Glass.Mapper.Sc.Fields;
 using Sitecore.Globalization;
-using Sitecore.Data;
 
 
 namespace ScWebApi.Domain.Models
@@ -32,97 +31,49 @@ namespace ScWebApi.Domain.Models
 	public partial interface IGlassBase{
 		
 		[SitecoreId]
-		Guid Id{ get; }
+		Guid Id{ get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Language)]
-        Language Language{ get; }
+        Language Language{ get; set; }
 
         [SitecoreInfo(SitecoreInfoType.Version)]
-        int Version { get; }
+        int Version { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Url)]
-        string Url { get;}
+        string Url { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Name)]
-        string Name { get;}
+        string Name { get; set; }
 
 		[SitecoreField("__Sortorder")]
-        int Sortorder { get;}
+        int Sortorder { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.BaseTemplateIds)]
-        IEnumerable<Guid> BaseTemplateIds { get; } 
+        IEnumerable<Guid> BaseTemplateIds { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.ContentPath)]
-        string ContentPath { get; }
+        string ContentPath { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.DisplayName)]
-        string DisplayName { get; }
+        string DisplayName { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.FullPath)]
-        string FullPath { get; }
+        string FullPath { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.Path)]
-        string Path { get; }
+        string Path { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.TemplateId)]
-        Guid TemplateId { get; }
+        Guid TemplateId { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.TemplateName)]
-        string TemplateName { get; }
+        string TemplateName { get; set; }
 
         [SitecoreChildren(InferType = true)]
-        IEnumerable<IGlassBase> Children { get; }
+        IEnumerable<IGlassBase> Children { get; set; }
 
         [SitecoreParent(InferType = true)]
-        IGlassBase Parent { get; }
-	}
-
-	public abstract partial class GlassBase : IGlassBase{
-		
-		[SitecoreId]
-		public virtual Guid Id{ get; private set;}
-
-		[SitecoreInfo(SitecoreInfoType.Language)]
-        public virtual Language Language{ get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.Version)]
-        public virtual int Version { get; private set; }
-
-		[SitecoreInfo(SitecoreInfoType.Url)]
-        public virtual string Url { get; private set; }
-
-		[SitecoreInfo(SitecoreInfoType.Name)]
-        public virtual string Name { get; private set; }
-
-		[SitecoreField("__Sortorder")]
-        public virtual int Sortorder { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.BaseTemplateIds)]
-        public virtual IEnumerable<Guid> BaseTemplateIds { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.ContentPath)]
-        public virtual string ContentPath { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.DisplayName)]
-        public virtual string DisplayName { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.FullPath)]
-        public virtual string FullPath { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.Path)]
-        public virtual string Path { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.TemplateId)]
-        public virtual Guid TemplateId { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.TemplateName)]
-        public virtual string TemplateName { get; private set; }
-
-        [SitecoreChildren(InferType = true)]
-        public virtual IEnumerable<IGlassBase> Children { get; private set; }
-
-        [SitecoreParent(InferType = true)]
-        public virtual IGlassBase Parent { get; private set; }
+        IGlassBase Parent { get; set; }
 	}
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
@@ -135,59 +86,36 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Products Landing Page</para>	
 	/// <para>ID: 0c2b9a8f-bd8a-469c-801f-760732e2dd87</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IProducts_Landing_PageConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IProducts_Landing_Page_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IProducts_Landing_Page : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages.IGeneric_Page
 	{
-				/// <summary>
+			
+					/// <summary>
 			/// The Product Categories Folder field.
 			/// <para></para>
 			/// <para>Field Type: Droptree</para>		
 			/// <para>Field ID: 5ea51def-6e1a-420a-9eed-aa487904f4d7</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IProducts_Landing_PageConstants.Product_Categories_FolderFieldName)]
-		Guid Product_Categories_Folder  {get; set;}
-		
-	}
+										[SitecoreField(IProducts_Landing_Page_Constants.Product_Categories_Folder_FieldName)]
+						Guid Product_Categories_Folder  { get; set; }
+				}
 
-
-	public static partial class IProducts_Landing_PageConstants{
+	public static partial class IProducts_Landing_Page_Constants{
 
 			public const string TemplateIdString = "0c2b9a8f-bd8a-469c-801f-760732e2dd87";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Products Landing Page";
 
 					
-			public static readonly ID Product_Categories_FolderFieldId = new ID("5ea51def-6e1a-420a-9eed-aa487904f4d7");
-			public const string Product_Categories_FolderFieldName = "Product Categories Folder";
+			public static readonly Guid Product_Categories_Folder_FieldId = new Guid("5ea51def-6e1a-420a-9eed-aa487904f4d7");
+			public const string Product_Categories_Folder_FieldName = "Product Categories Folder";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Products_Landing_Page
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Products Landing Page</para>	
-	/// <para>ID: 0c2b9a8f-bd8a-469c-801f-760732e2dd87</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IProducts_Landing_PageConstants.TemplateIdString)] //, Cachable = true
-	public partial class Products_Landing_Page  : GlassBase, IProducts_Landing_Page 
-	{
-	   
-				/// <summary>
-		/// The Product Categories Folder field.
-		/// <para></para>
-		/// <para>Field Type: Droptree</para>		
-		/// <para>Field ID: 5ea51def-6e1a-420a-9eed-aa487904f4d7</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProducts_Landing_PageConstants.Product_Categories_FolderFieldName)]
-		public virtual Guid Product_Categories_Folder  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Folders
 {
@@ -199,59 +127,36 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Fold
 	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Folders/Product Categories Folder</para>	
 	/// <para>ID: 17021883-71e7-491c-aa09-214a7ae6f9b2</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IProduct_Categories_FolderConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IProduct_Categories_Folder_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IProduct_Categories_Folder : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.Common.IFolder
 	{
-				/// <summary>
+			
+					/// <summary>
 			/// The Category Name field.
 			/// <para></para>
 			/// <para>Field Type: Single-Line Text</para>		
 			/// <para>Field ID: 6908ebf7-d1c5-457b-89f7-ab4a219adad3</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IProduct_Categories_FolderConstants.Category_NameFieldName)]
-		string Category_Name  {get; set;}
-		
-	}
+										[SitecoreField(IProduct_Categories_Folder_Constants.Category_Name_FieldName)]
+						string Category_Name  { get; set; }
+				}
 
-
-	public static partial class IProduct_Categories_FolderConstants{
+	public static partial class IProduct_Categories_Folder_Constants{
 
 			public const string TemplateIdString = "17021883-71e7-491c-aa09-214a7ae6f9b2";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Product Categories Folder";
 
 					
-			public static readonly ID Category_NameFieldId = new ID("6908ebf7-d1c5-457b-89f7-ab4a219adad3");
-			public const string Category_NameFieldName = "Category Name";
+			public static readonly Guid Category_Name_FieldId = new Guid("6908ebf7-d1c5-457b-89f7-ab4a219adad3");
+			public const string Category_Name_FieldName = "Category Name";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Product_Categories_Folder
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Folders/Product Categories Folder</para>	
-	/// <para>ID: 17021883-71e7-491c-aa09-214a7ae6f9b2</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IProduct_Categories_FolderConstants.TemplateIdString)] //, Cachable = true
-	public partial class Product_Categories_Folder  : GlassBase, IProduct_Categories_Folder 
-	{
-	   
-				/// <summary>
-		/// The Category Name field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: 6908ebf7-d1c5-457b-89f7-ab4a219adad3</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProduct_Categories_FolderConstants.Category_NameFieldName)]
-		public virtual string Category_Name  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items
 {
@@ -263,64 +168,30 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Product Category</para>	
 	/// <para>ID: 18b6da2e-d40a-42c5-b01b-59aeab4d64e9</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IProduct_CategoryConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IProduct_Category_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IProduct_Category : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items.Base.IBase_Named_Imported_Content
 	{
-	
-	}
+		}
 
-
-	public static partial class IProduct_CategoryConstants{
+	public static partial class IProduct_Category_Constants{
 
 			public const string TemplateIdString = "18b6da2e-d40a-42c5-b01b-59aeab4d64e9";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Product Category";
 
 					
-			public static readonly ID Legacy_NameFieldId = new ID("7446c4d9-01e7-406c-98d0-8a123ae10c02");
-			public const string Legacy_NameFieldName = "Legacy Name";
+			public static readonly Guid Legacy_Name_FieldId = new Guid("7446c4d9-01e7-406c-98d0-8a123ae10c02");
+			public const string Legacy_Name_FieldName = "Legacy Name";
 			
 					
-			public static readonly ID Legacy_IDFieldId = new ID("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
-			public const string Legacy_IDFieldName = "Legacy ID";
+			public static readonly Guid Legacy_ID_FieldId = new Guid("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
+			public const string Legacy_ID_FieldName = "Legacy ID";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Product_Category
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Product Category</para>	
-	/// <para>ID: 18b6da2e-d40a-42c5-b01b-59aeab4d64e9</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IProduct_CategoryConstants.TemplateIdString)] //, Cachable = true
-	public partial class Product_Category  : GlassBase, IProduct_Category 
-	{
-	   
-				/// <summary>
-		/// The Legacy Name field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: 7446c4d9-01e7-406c-98d0-8a123ae10c02</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProduct_CategoryConstants.Legacy_NameFieldName)]
-		public virtual string Legacy_Name  {get; set;}
-				/// <summary>
-		/// The Legacy ID field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: fd67f821-6ee0-40c4-bd89-f9ca376416f9</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProduct_CategoryConstants.Legacy_IDFieldName)]
-		public virtual string Legacy_ID  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 {
@@ -332,18 +203,20 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Importer Page</para>	
 	/// <para>ID: 26632c3b-28aa-4293-b093-ab30597410f0</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IImporter_PageConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IImporter_Page_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IImporter_Page : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages.IGeneric_Page
 	{
-				/// <summary>
+			
+					/// <summary>
 			/// The Product Categories Folder field.
 			/// <para></para>
 			/// <para>Field Type: Droptree</para>		
 			/// <para>Field ID: 1bb4a2a9-d818-48b9-a175-76420a836531</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IImporter_PageConstants.Product_Categories_FolderFieldName)]
-		Guid Product_Categories_Folder  {get; set;}
+										[SitecoreField(IImporter_Page_Constants.Product_Categories_Folder_FieldName)]
+						Guid Product_Categories_Folder  { get; set; }
+					
 					/// <summary>
 			/// The Products Landing Page field.
 			/// <para></para>
@@ -351,63 +224,29 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 			/// <para>Field ID: eb284bb6-5749-43f0-8fe4-81056a325057</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IImporter_PageConstants.Products_Landing_PageFieldName)]
-		Guid Products_Landing_Page  {get; set;}
-		
-	}
+										[SitecoreField(IImporter_Page_Constants.Products_Landing_Page_FieldName)]
+						Guid Products_Landing_Page  { get; set; }
+				}
 
-
-	public static partial class IImporter_PageConstants{
+	public static partial class IImporter_Page_Constants{
 
 			public const string TemplateIdString = "26632c3b-28aa-4293-b093-ab30597410f0";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Importer Page";
 
 					
-			public static readonly ID Product_Categories_FolderFieldId = new ID("1bb4a2a9-d818-48b9-a175-76420a836531");
-			public const string Product_Categories_FolderFieldName = "Product Categories Folder";
+			public static readonly Guid Product_Categories_Folder_FieldId = new Guid("1bb4a2a9-d818-48b9-a175-76420a836531");
+			public const string Product_Categories_Folder_FieldName = "Product Categories Folder";
 			
 					
-			public static readonly ID Products_Landing_PageFieldId = new ID("eb284bb6-5749-43f0-8fe4-81056a325057");
-			public const string Products_Landing_PageFieldName = "Products Landing Page";
+			public static readonly Guid Products_Landing_Page_FieldId = new Guid("eb284bb6-5749-43f0-8fe4-81056a325057");
+			public const string Products_Landing_Page_FieldName = "Products Landing Page";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Importer_Page
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Importer Page</para>	
-	/// <para>ID: 26632c3b-28aa-4293-b093-ab30597410f0</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IImporter_PageConstants.TemplateIdString)] //, Cachable = true
-	public partial class Importer_Page  : GlassBase, IImporter_Page 
-	{
-	   
-				/// <summary>
-		/// The Product Categories Folder field.
-		/// <para></para>
-		/// <para>Field Type: Droptree</para>		
-		/// <para>Field ID: 1bb4a2a9-d818-48b9-a175-76420a836531</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IImporter_PageConstants.Product_Categories_FolderFieldName)]
-		public virtual Guid Product_Categories_Folder  {get; set;}
-				/// <summary>
-		/// The Products Landing Page field.
-		/// <para></para>
-		/// <para>Field Type: Droptree</para>		
-		/// <para>Field ID: eb284bb6-5749-43f0-8fe4-81056a325057</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IImporter_PageConstants.Products_Landing_PageFieldName)]
-		public virtual Guid Products_Landing_Page  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 {
@@ -419,36 +258,22 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Home Page</para>	
 	/// <para>ID: 2ea24ac9-11c9-4f0b-8f2a-b889733e06e8</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IHome_PageConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IHome_Page_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IHome_Page : IGlassBase 
 	{
-	
-	}
+		}
 
-
-	public static partial class IHome_PageConstants{
+	public static partial class IHome_Page_Constants{
 
 			public const string TemplateIdString = "2ea24ac9-11c9-4f0b-8f2a-b889733e06e8";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Home Page";
 
 			
 
 	}
 
-	
-	/// <summary>
-	/// Home_Page
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Home Page</para>	
-	/// <para>ID: 2ea24ac9-11c9-4f0b-8f2a-b889733e06e8</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IHome_PageConstants.TemplateIdString)] //, Cachable = true
-	public partial class Home_Page  : GlassBase, IHome_Page 
-	{
-	   
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 {
@@ -460,36 +285,22 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Search Results Page</para>	
 	/// <para>ID: 3e0b62fd-0da8-4e57-9c28-8d127febdfa5</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=ISearch_Results_PageConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=ISearch_Results_Page_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface ISearch_Results_Page : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages.IGeneric_Page
 	{
-	
-	}
+		}
 
-
-	public static partial class ISearch_Results_PageConstants{
+	public static partial class ISearch_Results_Page_Constants{
 
 			public const string TemplateIdString = "3e0b62fd-0da8-4e57-9c28-8d127febdfa5";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Search Results Page";
 
 			
 
 	}
 
-	
-	/// <summary>
-	/// Search_Results_Page
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Search Results Page</para>	
-	/// <para>ID: 3e0b62fd-0da8-4e57-9c28-8d127febdfa5</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=ISearch_Results_PageConstants.TemplateIdString)] //, Cachable = true
-	public partial class Search_Results_Page  : GlassBase, ISearch_Results_Page 
-	{
-	   
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items.Base
 {
@@ -501,73 +312,40 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Base/Base Named Imported Content</para>	
 	/// <para>ID: 63b33824-c0cd-41f5-95d1-5b8f4e76b603</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IBase_Named_Imported_ContentConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IBase_Named_Imported_Content_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IBase_Named_Imported_Content : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items.Base.IBase_Imported_Content
 	{
-				/// <summary>
+			
+					/// <summary>
 			/// The Legacy Name field.
 			/// <para></para>
 			/// <para>Field Type: Single-Line Text</para>		
 			/// <para>Field ID: 7446c4d9-01e7-406c-98d0-8a123ae10c02</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IBase_Named_Imported_ContentConstants.Legacy_NameFieldName)]
-		string Legacy_Name  {get; set;}
-		
-	}
+										[SitecoreField(IBase_Named_Imported_Content_Constants.Legacy_Name_FieldName)]
+						string Legacy_Name  { get; set; }
+				}
 
-
-	public static partial class IBase_Named_Imported_ContentConstants{
+	public static partial class IBase_Named_Imported_Content_Constants{
 
 			public const string TemplateIdString = "63b33824-c0cd-41f5-95d1-5b8f4e76b603";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Base Named Imported Content";
 
 					
-			public static readonly ID Legacy_NameFieldId = new ID("7446c4d9-01e7-406c-98d0-8a123ae10c02");
-			public const string Legacy_NameFieldName = "Legacy Name";
+			public static readonly Guid Legacy_Name_FieldId = new Guid("7446c4d9-01e7-406c-98d0-8a123ae10c02");
+			public const string Legacy_Name_FieldName = "Legacy Name";
 			
 					
-			public static readonly ID Legacy_IDFieldId = new ID("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
-			public const string Legacy_IDFieldName = "Legacy ID";
+			public static readonly Guid Legacy_ID_FieldId = new Guid("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
+			public const string Legacy_ID_FieldName = "Legacy ID";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Base_Named_Imported_Content
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Base/Base Named Imported Content</para>	
-	/// <para>ID: 63b33824-c0cd-41f5-95d1-5b8f4e76b603</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IBase_Named_Imported_ContentConstants.TemplateIdString)] //, Cachable = true
-	public partial class Base_Named_Imported_Content  : GlassBase, IBase_Named_Imported_Content 
-	{
-	   
-				/// <summary>
-		/// The Legacy Name field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: 7446c4d9-01e7-406c-98d0-8a123ae10c02</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IBase_Named_Imported_ContentConstants.Legacy_NameFieldName)]
-		public virtual string Legacy_Name  {get; set;}
-				/// <summary>
-		/// The Legacy ID field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: fd67f821-6ee0-40c4-bd89-f9ca376416f9</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IBase_Named_Imported_ContentConstants.Legacy_IDFieldName)]
-		public virtual string Legacy_ID  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 {
@@ -579,36 +357,22 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
 	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Generic Page</para>	
 	/// <para>ID: 9d0bb4a7-cf91-4e66-bf35-6b384115887c</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IGeneric_PageConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IGeneric_Page_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IGeneric_Page : IGlassBase 
 	{
-	
-	}
+		}
 
-
-	public static partial class IGeneric_PageConstants{
+	public static partial class IGeneric_Page_Constants{
 
 			public const string TemplateIdString = "9d0bb4a7-cf91-4e66-bf35-6b384115887c";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Generic Page";
 
 			
 
 	}
 
-	
-	/// <summary>
-	/// Generic_Page
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Pages/Generic Page</para>	
-	/// <para>ID: 9d0bb4a7-cf91-4e66-bf35-6b384115887c</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IGeneric_PageConstants.TemplateIdString)] //, Cachable = true
-	public partial class Generic_Page  : GlassBase, IGeneric_Page 
-	{
-	   
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.Common
 {
@@ -620,36 +384,22 @@ namespace ScWebApi.Domain.Models.sitecore.templates.Common
 	/// <para>Path: /sitecore/templates/Common/Folder</para>	
 	/// <para>ID: a87a00b1-e6db-45ab-8b54-636fec3b5523</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IFolderConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IFolder_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IFolder : IGlassBase 
 	{
-	
-	}
+		}
 
-
-	public static partial class IFolderConstants{
+	public static partial class IFolder_Constants{
 
 			public const string TemplateIdString = "a87a00b1-e6db-45ab-8b54-636fec3b5523";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Folder";
 
 			
 
 	}
 
-	
-	/// <summary>
-	/// Folder
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/Common/Folder</para>	
-	/// <para>ID: a87a00b1-e6db-45ab-8b54-636fec3b5523</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IFolderConstants.TemplateIdString)] //, Cachable = true
-	public partial class Folder  : GlassBase, IFolder 
-	{
-	   
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items.Base
 {
@@ -661,59 +411,36 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Base/Base Imported Content</para>	
 	/// <para>ID: b90e201a-510d-4d07-b737-da3073f01a43</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IBase_Imported_ContentConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IBase_Imported_Content_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IBase_Imported_Content : IGlassBase 
 	{
-				/// <summary>
+			
+					/// <summary>
 			/// The Legacy ID field.
 			/// <para></para>
 			/// <para>Field Type: Single-Line Text</para>		
 			/// <para>Field ID: fd67f821-6ee0-40c4-bd89-f9ca376416f9</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IBase_Imported_ContentConstants.Legacy_IDFieldName)]
-		string Legacy_ID  {get; set;}
-		
-	}
+										[SitecoreField(IBase_Imported_Content_Constants.Legacy_ID_FieldName)]
+						string Legacy_ID  { get; set; }
+				}
 
-
-	public static partial class IBase_Imported_ContentConstants{
+	public static partial class IBase_Imported_Content_Constants{
 
 			public const string TemplateIdString = "b90e201a-510d-4d07-b737-da3073f01a43";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Base Imported Content";
 
 					
-			public static readonly ID Legacy_IDFieldId = new ID("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
-			public const string Legacy_IDFieldName = "Legacy ID";
+			public static readonly Guid Legacy_ID_FieldId = new Guid("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
+			public const string Legacy_ID_FieldName = "Legacy ID";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Base_Imported_Content
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Base/Base Imported Content</para>	
-	/// <para>ID: b90e201a-510d-4d07-b737-da3073f01a43</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IBase_Imported_ContentConstants.TemplateIdString)] //, Cachable = true
-	public partial class Base_Imported_Content  : GlassBase, IBase_Imported_Content 
-	{
-	   
-				/// <summary>
-		/// The Legacy ID field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: fd67f821-6ee0-40c4-bd89-f9ca376416f9</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IBase_Imported_ContentConstants.Legacy_IDFieldName)]
-		public virtual string Legacy_ID  {get; set;}
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.Common
 {
@@ -725,36 +452,22 @@ namespace ScWebApi.Domain.Models.sitecore.templates.Common
 	/// <para>Path: /sitecore/templates/Common/Site</para>	
 	/// <para>ID: d5ac3876-9430-47c3-b7f2-5c15c3b35ae3</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=ISiteConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=ISite_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface ISite : IGlassBase 
 	{
-	
-	}
+		}
 
-
-	public static partial class ISiteConstants{
+	public static partial class ISite_Constants{
 
 			public const string TemplateIdString = "d5ac3876-9430-47c3-b7f2-5c15c3b35ae3";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Site";
 
 			
 
 	}
 
-	
-	/// <summary>
-	/// Site
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/Common/Site</para>	
-	/// <para>ID: d5ac3876-9430-47c3-b7f2-5c15c3b35ae3</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=ISiteConstants.TemplateIdString)] //, Cachable = true
-	public partial class Site  : GlassBase, ISite 
-	{
-	   
-			
-	}
+
 }
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items
 {
@@ -766,18 +479,30 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Product</para>	
 	/// <para>ID: eabfa294-654e-4985-8ec7-2346dd9cf458</para>	
 	/// </summary>
-	[SitecoreType(TemplateId=IProductConstants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=IProduct_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface IProduct : IGlassBase , global::ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items.Base.IBase_Named_Imported_Content
 	{
-				/// <summary>
+						/// <summary>
 			/// The Description field.
 			/// <para></para>
 			/// <para>Field Type: Rich Text</para>		
 			/// <para>Field ID: f5986ea5-fe57-42ef-bf88-2da1efc17e2e</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IProductConstants.DescriptionFieldName)]
-		string Description  {get; set;}
+										[SitecoreField(IProduct_Constants.Description_FieldName, ReadOnly = true)]
+						string Description  { get; set; }
+
+			/// <summary>
+			/// The Description field in RAW format.
+			/// <para></para>
+			/// <para>Field Type: Rich Text</para>		
+			/// <para>Field ID: f5986ea5-fe57-42ef-bf88-2da1efc17e2e</para>
+			/// <para>Custom Data: </para>
+			/// </summary>
+										[SitecoreField(IProduct_Constants.Description_FieldName, Setting = SitecoreFieldSettings.RichTextRaw)]
+						string Description_Raw  { get; set; }
+		
+					
 					/// <summary>
 			/// The List Price field.
 			/// <para></para>
@@ -785,8 +510,9 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 			/// <para>Field ID: 9ef63b75-4678-4eee-9db6-64d9389ee318</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IProductConstants.List_PriceFieldName)]
-		string List_Price  {get; set;}
+										[SitecoreField(IProduct_Constants.List_Price_FieldName)]
+						string List_Price  { get; set; }
+					
 					/// <summary>
 			/// The Product Subcategory field.
 			/// <para></para>
@@ -794,103 +520,39 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 			/// <para>Field ID: 23cf718c-b33c-4667-84f7-4060daa289e6</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-				[SitecoreField(IProductConstants.Product_SubcategoryFieldName)]
-		Guid Product_Subcategory  {get; set;}
-		
-	}
+										[SitecoreField(IProduct_Constants.Product_Subcategory_FieldName)]
+						Guid Product_Subcategory  { get; set; }
+				}
 
-
-	public static partial class IProductConstants{
+	public static partial class IProduct_Constants{
 
 			public const string TemplateIdString = "eabfa294-654e-4985-8ec7-2346dd9cf458";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "Product";
 
 					
-			public static readonly ID DescriptionFieldId = new ID("f5986ea5-fe57-42ef-bf88-2da1efc17e2e");
-			public const string DescriptionFieldName = "Description";
+			public static readonly Guid Description_FieldId = new Guid("f5986ea5-fe57-42ef-bf88-2da1efc17e2e");
+			public const string Description_FieldName = "Description";
 			
 					
-			public static readonly ID List_PriceFieldId = new ID("9ef63b75-4678-4eee-9db6-64d9389ee318");
-			public const string List_PriceFieldName = "List Price";
+			public static readonly Guid List_Price_FieldId = new Guid("9ef63b75-4678-4eee-9db6-64d9389ee318");
+			public const string List_Price_FieldName = "List Price";
 			
 					
-			public static readonly ID Product_SubcategoryFieldId = new ID("23cf718c-b33c-4667-84f7-4060daa289e6");
-			public const string Product_SubcategoryFieldName = "Product Subcategory";
+			public static readonly Guid Product_Subcategory_FieldId = new Guid("23cf718c-b33c-4667-84f7-4060daa289e6");
+			public const string Product_Subcategory_FieldName = "Product Subcategory";
 			
 					
-			public static readonly ID Legacy_NameFieldId = new ID("7446c4d9-01e7-406c-98d0-8a123ae10c02");
-			public const string Legacy_NameFieldName = "Legacy Name";
+			public static readonly Guid Legacy_Name_FieldId = new Guid("7446c4d9-01e7-406c-98d0-8a123ae10c02");
+			public const string Legacy_Name_FieldName = "Legacy Name";
 			
 					
-			public static readonly ID Legacy_IDFieldId = new ID("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
-			public const string Legacy_IDFieldName = "Legacy ID";
+			public static readonly Guid Legacy_ID_FieldId = new Guid("fd67f821-6ee0-40c4-bd89-f9ca376416f9");
+			public const string Legacy_ID_FieldName = "Legacy ID";
 			
 			
 
 	}
 
-	
-	/// <summary>
-	/// Product
-	/// <para></para>
-	/// <para>Path: /sitecore/templates/ScWebApi/Shared Content/Items/Product</para>	
-	/// <para>ID: eabfa294-654e-4985-8ec7-2346dd9cf458</para>	
-	/// </summary>
-	[SitecoreType(TemplateId=IProductConstants.TemplateIdString)] //, Cachable = true
-	public partial class Product  : GlassBase, IProduct 
-	{
-	   
-				/// <summary>
-		/// The Description field.
-		/// <para></para>
-		/// <para>Field Type: Rich Text</para>		
-		/// <para>Field ID: f5986ea5-fe57-42ef-bf88-2da1efc17e2e</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProductConstants.DescriptionFieldName)]
-		public virtual string Description  {get; set;}
-				/// <summary>
-		/// The List Price field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: 9ef63b75-4678-4eee-9db6-64d9389ee318</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProductConstants.List_PriceFieldName)]
-		public virtual string List_Price  {get; set;}
-				/// <summary>
-		/// The Product Subcategory field.
-		/// <para></para>
-		/// <para>Field Type: Droptree</para>		
-		/// <para>Field ID: 23cf718c-b33c-4667-84f7-4060daa289e6</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProductConstants.Product_SubcategoryFieldName)]
-		public virtual Guid Product_Subcategory  {get; set;}
-				/// <summary>
-		/// The Legacy Name field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: 7446c4d9-01e7-406c-98d0-8a123ae10c02</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProductConstants.Legacy_NameFieldName)]
-		public virtual string Legacy_Name  {get; set;}
-				/// <summary>
-		/// The Legacy ID field.
-		/// <para></para>
-		/// <para>Field Type: Single-Line Text</para>		
-		/// <para>Field ID: fd67f821-6ee0-40c4-bd89-f9ca376416f9</para>
-		/// <para>Custom Data: </para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Team Development for Sitecore - GlassItem.tt", "1.0")]
-			[SitecoreField(IProductConstants.Legacy_IDFieldName)]
-		public virtual string Legacy_ID  {get; set;}
-			
-	}
+
 }

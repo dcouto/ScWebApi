@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScWebApi.Domain", "ScWebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScWebApi.Repositories", "ScWebApi.Repositories\ScWebApi.Repositories.csproj", "{97943B04-50B7-4D64-990E-79AADA8E1A2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScWebApi.Repository.Interfaces", "ScWebApi.Repository.Interfaces\ScWebApi.Repository.Interfaces.csproj", "{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScWebApi.Repository.Models", "ScWebApi.Repository.Models\ScWebApi.Repository.Models.csproj", "{04E672C0-0E90-41AF-9FD5-70988E22FD1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,14 @@ Global
 		{97943B04-50B7-4D64-990E-79AADA8E1A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97943B04-50B7-4D64-990E-79AADA8E1A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97943B04-50B7-4D64-990E-79AADA8E1A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E672C0-0E90-41AF-9FD5-70988E22FD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E672C0-0E90-41AF-9FD5-70988E22FD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E672C0-0E90-41AF-9FD5-70988E22FD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E672C0-0E90-41AF-9FD5-70988E22FD1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

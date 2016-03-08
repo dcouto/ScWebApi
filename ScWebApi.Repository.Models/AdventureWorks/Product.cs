@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ScWebApi.Repositories.Models.AdventureWorks
+namespace ScWebApi.Repository.Models.AdventureWorks
 {
     [Table("Production.Product")]
     public partial class Product

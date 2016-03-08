@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using ScWebApi.Repositories.DALs.SitecoreEntityService;
-using ScWebApi.Repositories.Models.SitecoreEntityService;
+using ScWebApi.Repository.Models.SitecoreEntityService;
 using Sitecore.Services.Core;
 using Sitecore.Services.Infrastructure.Sitecore.Services;
 

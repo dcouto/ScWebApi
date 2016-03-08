@@ -86,10 +86,6 @@
   <ItemGroup>
     <Compile Include="DALs\AdventureWorks\AdventureWorksContext.cs" />
     <Compile Include="DALs\Sitecore\SitecoreRepository.cs" />
-    <Compile Include="Models\AdventureWorks\Product.cs" />
-    <Compile Include="Models\AdventureWorks\ProductCategory.cs" />
-    <Compile Include="Models\AdventureWorks\ProductSubcategory.cs" />
-    <Compile Include="Models\AdventureWorks\vProductAndDescription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -99,14 +95,19 @@
     <Compile Include="DALs\SitecoreEntityService\BaseRepository.cs" />
     <Compile Include="DALs\SitecoreEntityService\ProductRepository.cs" />
     <Compile Include="DALs\SitecoreEntityService\SearchFacetRepository.cs" />
-    <Compile Include="Models\SitecoreEntityService\BaseEntity.cs" />
-    <Compile Include="Models\SitecoreEntityService\Product.cs" />
-    <Compile Include="Models\SitecoreEntityService\SearchFacet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScWebApi.Domain\ScWebApi.Domain.csproj">
       <Project>{fb49e06d-a825-462c-8c02-0f74e85b06a9}</Project>
       <Name>ScWebApi.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScWebApi.Repository.Interfaces\ScWebApi.Repository.Interfaces.csproj">
+      <Project>{F2348D14-21EE-4919-B4BF-4ADA0BC20BDD}</Project>
+      <Name>ScWebApi.Repository.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScWebApi.Repository.Models\ScWebApi.Repository.Models.csproj">
+      <Project>{04e672c0-0e90-41af-9fd5-70988e22fd1a}</Project>
+      <Name>ScWebApi.Repository.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

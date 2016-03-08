@@ -1,34 +1,33 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ScWebApi.Repositories.Models.AdventureWorks
+namespace ScWebApi.Repositories.Interfaces.Models.AdventureWorks
 {
-    [Table("Production.vProductAndDescription")]
-    public partial class vProductAndDescription
+    public interface IvProductAndDescription
     {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ProductID { get; set; }
+        int ProductID { get; set; }
 
         //[Key]
         //[Column(Order = 1)]
         //[StringLength(50)]
-        //public string Name { get; set; }
+        //string Name { get; set; }
 
         //[Key]
         //[Column(Order = 2)]
         //[StringLength(50)]
-        //public string ProductModel { get; set; }
+        //string ProductModel { get; set; }
 
         [Key]
         [Column(Order = 3)]
         [StringLength(6)]
-        public string CultureID { get; set; }
+        string CultureID { get; set; }
 
         [Key]
         [Column(Order = 4)]
         [StringLength(400)]
-        public string Description { get; set; }
+        string Description { get; set; } 
     }
 }

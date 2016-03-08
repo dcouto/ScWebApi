@@ -5,7 +5,7 @@ using ScWebApi.Domain.Models;
 using ScWebApi.Domain.Models.sitecore.templates.Common;
 using ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items;
 using ScWebApi.Domain.Search.Managers;
-using ScWebApi.Repositories.Models.SitecoreEntityService;
+using ScWebApi.Repository.Models.SitecoreEntityService;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Services.Core;
 

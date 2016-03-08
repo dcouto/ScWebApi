@@ -4,6 +4,10 @@ namespace ScWebApi.Domain.DTOs
 {
     public class ResultsAndFacetsDTO
     {
+        public List<KeyValuePair<int, SearchResultDTO>> SortedSearchResults { get; set; }
+        public List<KeyValuePair<int, FacetCategoryDTO>> SortedFacetCategories { get; set; }
+        public int TotalSearchResults { get; set; }
+
         public ResultsAndFacetsDTO()
         {
             SortedSearchResults = new List<KeyValuePair<int, SearchResultDTO>>();
@@ -17,9 +21,5 @@ namespace ScWebApi.Domain.DTOs
             SortedFacetCategories = facetCategories;
             TotalSearchResults = totalSearchResults;
         }
-
-        public List<KeyValuePair<int, SearchResultDTO>> SortedSearchResults { get; set; }
-        public List<KeyValuePair<int, FacetCategoryDTO>> SortedFacetCategories { get; set; }
-        public int TotalSearchResults { get; set; }
     }
 }

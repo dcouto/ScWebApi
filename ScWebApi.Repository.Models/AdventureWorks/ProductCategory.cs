@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ScWebApi.Repositories.Models.AdventureWorks
+namespace ScWebApi.Repository.Models.AdventureWorks
 {
     [Table("Production.ProductCategory")]
     public partial class ProductCategory
