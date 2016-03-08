@@ -2,7 +2,7 @@
 
 namespace ScWebApi.Domain.Models.sitecore.templates.Common
 {
-    public static class SiteExtensions
+    public static class Site_Extensions
     {
         public static IFolder GetSharedContentFolder(this ISite site)
         {

@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALs\AdventureWorks\AdventureWorksContext.cs" />
+    <Compile Include="DALs\Sitecore\SitecoreRepository.cs" />
     <Compile Include="Models\AdventureWorks\Product.cs" />
     <Compile Include="Models\AdventureWorks\ProductCategory.cs" />
     <Compile Include="Models\AdventureWorks\ProductSubcategory.cs" />

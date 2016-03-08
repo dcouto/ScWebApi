@@ -71,11 +71,11 @@
     </Compile>
     <Compile Include="DTOs\SearchResultsDTO.cs" />
     <Compile Include="Models\GlassModels.cs" />
-    <Compile Include="Models\sitecore\templates\Common\SiteExtensions.cs" />
-    <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Importer_PageExtensions.cs" />
-    <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Products_Landing_PageExtensions.cs" />
-    <Compile Include="Models\sitecore\templates\ScWebApi\Shared_Content\Folders\Product_Categories_FolderExtensions.cs" />
-    <Compile Include="Models\sitecore\templates\ScWebApi\Shared_Content\Items\Product_CategoryExtensions.cs" />
+    <Compile Include="Models\sitecore\templates\Common\Site_Extensions.cs" />
+    <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Importer_Page_Extensions.cs" />
+    <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Products_Landing_Page_Extensions.cs" />
+    <Compile Include="Models\sitecore\templates\ScWebApi\Shared_Content\Folders\Product_Categories_Folder_Extensions.cs" />
+    <Compile Include="Models\sitecore\templates\ScWebApi\Shared_Content\Items\Product_Category_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\Managers\BaseSearchManager.cs" />
     <Compile Include="Search\Managers\ProductsSearchManager.cs" />

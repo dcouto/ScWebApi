@@ -62,10 +62,11 @@ namespace <#= GetNamespace(DefaultNamespace, template)#>
 	/// <para>Path: <#= template.Path #></para>	
 	/// <para>ID: <#= template.ID.ToString() #></para>	
 	/// </summary>
-	[SitecoreType(TemplateId=<#= AsInterfaceName(template.Name) #>Constants.TemplateIdString )] //, Cachable = true
+	[SitecoreType(TemplateId=<#= AsInterfaceName(template.Name) #>_Constants.TemplateIdString )] //, Cachable = true
 	public partial interface <#= AsInterfaceName(template.Name) #> : IGlassBase <#=GetObjectInheritanceDefinition(DefaultNamespace, template, true, (string s) => AsInterfaceName(s))#>
 	{
 	<#foreach(SitecoreField field in GetFieldsForTemplate(template, false)){#>
+		<#if(field.Type.ToLower() == "rich text"){#>
 			/// <summary>
 			/// The <#=field.Name#> field.
 			/// <para><#= GetValue(field.SitecoreFields, "__Short description")#></para>
@@ -73,65 +74,65 @@ namespace <#= GetNamespace(DefaultNamespace, template)#>
 			/// <para>Field ID: <#=field.ID.ToString()#></para>
 			/// <para>Custom Data: <#=field.Data#></para>
 			/// </summary>
-	<#if(GetCustomProperty(field.Data, "type") != "" || GetCustomProperty(field.Data, "generic")!= ""){#>
-		[SitecoreField(FieldName="<#=field.Name#>")]
-	<#}#>
-	<#if(GetCustomProperty(field.Data, "type") == "" && GetCustomProperty(field.Data, "generic") == ""){#>
-		[SitecoreField(<#= AsInterfaceName(template.Name) #>Constants.<#= GetPropertyName(field) #>FieldName)]
-	<#}#>
-	<#=GetGlassFieldType(field)#> <#= GetPropertyName(field) #>  {get; set;}
+			<#if(GetCustomProperty(field.Data, "type") != "" || GetCustomProperty(field.Data, "generic")!= ""){#>
+				[SitecoreField(FieldName="<#=field.Name#>", ReadOnly = true)]
+			<#}#>
+			<#if(GetCustomProperty(field.Data, "type") == "" && GetCustomProperty(field.Data, "generic") == ""){#>
+				[SitecoreField(<#= AsInterfaceName(template.Name) #>_Constants.<#= GetPropertyName(field) #>_FieldName, ReadOnly = true)]
+			<#}#>
+			<#=GetGlassFieldType(field)#> <#= GetPropertyName(field) #>  { get; set; }
+
+			/// <summary>
+			/// The <#=field.Name#> field in RAW format.
+			/// <para><#= GetValue(field.SitecoreFields, "__Short description")#></para>
+			/// <para>Field Type: <#=field.Type#></para>		
+			/// <para>Field ID: <#=field.ID.ToString()#></para>
+			/// <para>Custom Data: <#=field.Data#></para>
+			/// </summary>
+			<#if(GetCustomProperty(field.Data, "type") != "" || GetCustomProperty(field.Data, "generic")!= ""){#>
+				[SitecoreField(FieldName="<#=field.Name#>", Setting = SitecoreFieldSettings.RichTextRaw)]
+			<#}#>
+			<#if(GetCustomProperty(field.Data, "type") == "" && GetCustomProperty(field.Data, "generic") == ""){#>
+				[SitecoreField(<#= AsInterfaceName(template.Name) #>_Constants.<#= GetPropertyName(field) #>_FieldName, Setting = SitecoreFieldSettings.RichTextRaw)]
+			<#}#>
+			<#=GetGlassFieldType(field)#> <#= GetPropertyName(field) #>_Raw  { get; set; }
 		<#}#>
 
+		<#if(field.Type.ToLower() != "rich text"){#>
+			/// <summary>
+			/// The <#=field.Name#> field.
+			/// <para><#= GetValue(field.SitecoreFields, "__Short description")#></para>
+			/// <para>Field Type: <#=field.Type#></para>		
+			/// <para>Field ID: <#=field.ID.ToString()#></para>
+			/// <para>Custom Data: <#=field.Data#></para>
+			/// </summary>
+			<#if(GetCustomProperty(field.Data, "type") != "" || GetCustomProperty(field.Data, "generic")!= ""){#>
+				[SitecoreField(FieldName="<#=field.Name#>")]
+			<#}#>
+			<#if(GetCustomProperty(field.Data, "type") == "" && GetCustomProperty(field.Data, "generic") == ""){#>
+				[SitecoreField(<#= AsInterfaceName(template.Name) #>_Constants.<#= GetPropertyName(field) #>_FieldName)]
+			<#}#>
+			<#=GetGlassFieldType(field)#> <#= GetPropertyName(field) #>  { get; set; }
+		<#}#>
+	<#}#>
 	}
 
-
-	public static partial class <#= AsInterfaceName(template.Name) #>Constants{
+	public static partial class <#= AsInterfaceName(template.Name) #>_Constants{
 
 			public const string TemplateIdString = "<#= template.ID.ToString() #>";
-			public static readonly ID TemplateId = new ID(TemplateIdString);
+			public static readonly Guid TemplateId = new Guid(TemplateIdString);
 			public const string TemplateName = "<#= template.Name #>";
 
 		<#foreach(SitecoreField field in GetFieldsForTemplate(template, true)){#>
 			
-			public static readonly ID <#= GetPropertyName(field) #>FieldId = new ID("<#=field.ID.ToString()#>");
-			public const string <#= GetPropertyName(field) #>FieldName = "<#=field.Name#>";
+			public static readonly Guid <#= GetPropertyName(field) #>_FieldId = new Guid("<#=field.ID.ToString()#>");
+			public const string <#= GetPropertyName(field) #>_FieldName = "<#=field.Name#>";
 			
 		<#}#>	
 
 	}
 
-<#
-// If the name of the template looks like an Interface, then don't generate a class definition
-if (!IsInterfaceWord(template.Name)){ #>	
-	/// <summary>
-	/// <#= AsClassName(template.Name) #>
-	/// <para><#= GetValue(template.SitecoreFields, "__Short description")#></para>
-	/// <para>Path: <#= template.Path #></para>	
-	/// <para>ID: <#= template.ID.ToString() #></para>	
-	/// </summary>
-	[SitecoreType(TemplateId=<#= AsInterfaceName(template.Name) #>Constants.TemplateIdString)] //, Cachable = true
-	public partial class <#= AsClassName(template.Name) #>  : GlassBase, <#=AsInterfaceName(template.Name)#> 
-	{
-	   
-		<#foreach(SitecoreField field in GetFieldsForTemplate(template, true)){#>
-		/// <summary>
-		/// The <#=field.Name#> field.
-		/// <para><#= GetValue(field.SitecoreFields, "__Short description")#></para>
-		/// <para>Field Type: <#=field.Type#></para>		
-		/// <para>Field ID: <#=field.ID.ToString()#></para>
-		/// <para>Custom Data: <#=field.Data#></para>
-		/// </summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("<#=Tool#>", "<#=ToolVersion#>")]
-	<#if(GetCustomProperty(field.Data, "type") != "" || GetCustomProperty(field.Data, "generic")!= ""){#>
-	[SitecoreField(FieldName="<#=field.Name#>")]
-	<#}#>
-	<#if(GetCustomProperty(field.Data, "type") == "" && GetCustomProperty(field.Data, "generic") == ""){#>
-	[SitecoreField(<#= AsInterfaceName(template.Name) #>Constants.<#= GetPropertyName(field) #>FieldName)]
-	<#}#>
-	public virtual <#=GetGlassFieldType(field)#> <#= GetPropertyName(field) #>  {get; set;}
-		<#}#>	
-	}
-<#}#>
+
 }
 
 <#+

@@ -33,7 +33,6 @@ using Glass.Mapper.Sc.Configuration.Attributes;
 using Glass.Mapper.Sc.Configuration;
 using Glass.Mapper.Sc.Fields;
 using Sitecore.Globalization;
-using Sitecore.Data;
 
 <#
 // Calculate the top leve namespace as configured in the target project and
@@ -47,96 +46,48 @@ namespace <#=fullNamespace #>
 	public partial interface IGlassBase{
 		
 		[SitecoreId]
-		Guid Id{ get; }
+		Guid Id{ get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Language)]
-        Language Language{ get; }
+        Language Language{ get; set; }
 
         [SitecoreInfo(SitecoreInfoType.Version)]
-        int Version { get; }
+        int Version { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Url)]
-        string Url { get;}
+        string Url { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.Name)]
         string Name { get; set; }
 
 		[SitecoreField("__Sortorder")]
-        int Sortorder { get;}
+        int Sortorder { get; set; }
 
 		[SitecoreInfo(SitecoreInfoType.BaseTemplateIds)]
-        IEnumerable<Guid> BaseTemplateIds { get; } 
+        IEnumerable<Guid> BaseTemplateIds { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.ContentPath)]
-        string ContentPath { get; }
+        string ContentPath { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.DisplayName)]
-        string DisplayName { get; }
+        string DisplayName { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.FullPath)]
-        string FullPath { get; }
+        string FullPath { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.Path)]
-        string Path { get; }
+        string Path { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.TemplateId)]
-        Guid TemplateId { get; }
+        Guid TemplateId { get; set; }
 
         [SitecoreInfo(SitecoreInfoType.TemplateName)]
-        string TemplateName { get; }
+        string TemplateName { get; set; }
 
         [SitecoreChildren(InferType = true)]
-        IEnumerable<IGlassBase> Children { get; }
+        IEnumerable<IGlassBase> Children { get; set; }
 
         [SitecoreParent(InferType = true)]
-        IGlassBase Parent { get; }
-	}
-
-	public abstract partial class GlassBase : IGlassBase{
-		
-		[SitecoreId]
-		public virtual Guid Id{ get; private set;}
-
-		[SitecoreInfo(SitecoreInfoType.Language)]
-        public virtual Language Language{ get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.Version)]
-        public virtual int Version { get; private set; }
-
-		[SitecoreInfo(SitecoreInfoType.Url)]
-        public virtual string Url { get; private set; }
-
-		[SitecoreInfo(SitecoreInfoType.Name)]
-        public virtual string Name { get; set; }
-
-		[SitecoreField("__Sortorder")]
-        public virtual int Sortorder { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.BaseTemplateIds)]
-        public virtual IEnumerable<Guid> BaseTemplateIds { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.ContentPath)]
-        public virtual string ContentPath { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.DisplayName)]
-        public virtual string DisplayName { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.FullPath)]
-        public virtual string FullPath { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.Path)]
-        public virtual string Path { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.TemplateId)]
-        public virtual Guid TemplateId { get; private set; }
-
-        [SitecoreInfo(SitecoreInfoType.TemplateName)]
-        public virtual string TemplateName { get; private set; }
-
-        [SitecoreChildren(InferType = true)]
-        public virtual IEnumerable<IGlassBase> Children { get; private set; }
-
-        [SitecoreParent(InferType = true)]
-        public virtual IGlassBase Parent { get; private set; }
+        IGlassBase Parent { get; set; }
 	}
 }

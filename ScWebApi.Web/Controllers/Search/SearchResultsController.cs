@@ -19,7 +19,7 @@ namespace ScWebApi.Web.Controllers.Search
         public ActionResult Default(SearchResultsViewModel vm)
         {
             var resultsAndFacets = new ProductsSearchManager().Search(SitecoreContext.Database.Name, ContextItem.ID,
-                IProductConstants.TemplateIdString, vm.Q, 10, 0);
+                IProduct_Constants.TemplateIdString, vm.Q, 10, 0);
 
             var resultsAndFacetsDTO = new ResultsAndFacetsDTO();
 

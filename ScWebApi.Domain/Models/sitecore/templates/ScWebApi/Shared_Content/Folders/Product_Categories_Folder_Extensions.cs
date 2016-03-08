@@ -7,13 +7,13 @@ using Sitecore.ContentSearch.SearchTypes;
 
 namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Folders
 {
-    public static class Product_Categories_FolderExtensions
+    public static class Product_Categories_Folder_Extensions
     {
         public static IEnumerable<IProduct_Category> GetProductCategories(this IProduct_Categories_Folder item,
             ISitecoreContext sitecoreContext)
         {
             return
-                item.Children.Where(i => i.TemplateId == IProduct_CategoryConstants.TemplateId.Guid)
+                item.Children.Where(i => i.TemplateId == IProduct_Category_Constants.TemplateId)
                     .Select(i => i as IProduct_Category);
         }
 
@@ -23,7 +23,7 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Fold
             var searcher = new SiteSearchManager();
 
             var allDescendents = searcher.Search<SearchResultItem>(sitecoreContext.Database.Name, item.Id,
-                IProduct_CategoryConstants.TemplateIdString);
+                IProduct_Category_Constants.TemplateIdString);
 
             return
                 allDescendents.Hits.Select(i => i.Document)

@@ -26,7 +26,7 @@ namespace ScWebApi.Repositories.DALs.SitecoreEntityService
 
             var allSearchFacets =
                 searcher.Search<SearchResultItem>(SitecoreContext.Database.Name, sharedContentFolder.Id,
-                    IProduct_CategoryConstants.TemplateIdString)
+                    IProduct_Category_Constants.TemplateIdString)
                     .Hits.Select(i => i.Document)
                     .Select(i => SitecoreContext.GetItem<IProduct_Category>(i.ItemId.Guid))
                     .Where(i => i != null)

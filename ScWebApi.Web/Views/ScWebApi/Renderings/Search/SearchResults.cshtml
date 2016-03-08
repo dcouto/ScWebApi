@@ -1,8 +1,17 @@
-﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<ScWebApi.Web.ViewModels.Search.SearchResultsViewModel>
+﻿@using Glass.Mapper.Sc
+@using ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Pages
+@using ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Items
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<ScWebApi.Web.ViewModels.Search.SearchResultsViewModel>
 
 <script type="text/javascript">
     var resultsAndFacetsJson = @Html.Raw(Model.ResultsAndFacetsJson)
 </script>
+
+@{
+    var product = ContextItem.GlassCast<IProducts_Landing_Page>().Children.FirstOrDefault() as IProduct;
+}
+
+@Editable(product, i => i.Description)
 
 <hr/>
 
