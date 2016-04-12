@@ -489,7 +489,7 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 			/// <para>Field ID: f5986ea5-fe57-42ef-bf88-2da1efc17e2e</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-										[SitecoreField(IProduct_Constants.Description_FieldName, ReadOnly = true)]
+										[SitecoreField(IProduct_Constants.Description_FieldName)]
 						string Description  { get; set; }
 
 			/// <summary>
@@ -499,8 +499,8 @@ namespace ScWebApi.Domain.Models.sitecore.templates.ScWebApi.Shared_Content.Item
 			/// <para>Field ID: f5986ea5-fe57-42ef-bf88-2da1efc17e2e</para>
 			/// <para>Custom Data: </para>
 			/// </summary>
-										[SitecoreField(IProduct_Constants.Description_FieldName, Setting = SitecoreFieldSettings.RichTextRaw)]
-						string Description_Raw  { get; set; }
+										//[SitecoreField(IProduct_Constants.Description_FieldName, Setting = SitecoreFieldSettings.RichTextRaw)]
+						//string Description_Raw  { get; set; }
 		
 					
 					/// <summary>

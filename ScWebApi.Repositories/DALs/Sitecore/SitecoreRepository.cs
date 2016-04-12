@@ -135,55 +135,13 @@ namespace ScWebApi.Repositories.DALs.Sitecore
                                     //var matchingProdRaw = _sitecoreContext.GetItem<IProduct>(matchingProd.Id);
 
                                     //matchingProdRaw.Description_Raw = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
-                                    //matchingProdRaw.Description = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
-                                    matchingProd.Description_Raw = string.Format("<p>{0}</p>",
-                                        matchingProdAndDesc.Description);
+                                    matchingProd.Description = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
+                                    //matchingProd.Description_Raw = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
 
                                     //_sitecoreContext.Save(matchingProdRaw);
                                 }
 
                                 _sitecoreContext.Save(matchingProd);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public void AddProductDescriptions(Guid productsLandingPage)
-        {
-            using (new BulkUpdateContext())
-            {
-                using (new SecurityDisabler())
-                {
-                    var prodsLandingPage = _sitecoreContext.GetItem<IProducts_Landing_Page>(productsLandingPage);
-
-                    if (prodsLandingPage == null)
-                        return;
-
-                    //var existingProducts = prodsLandingPage.GetProducts<IProduct_Raw>(_sitecoreContext).ToList();
-                    var existingProducts = prodsLandingPage.GetProducts().ToList();
-
-                    using (_adventureWorksContext = new AdventureWorksContext())
-                    {
-                        var allProductsAndDescriptions = _adventureWorksContext.vProductAndDescriptions.Where(i => i.CultureID == "en");
-
-                        foreach (var importingProd in _adventureWorksContext.Products.ToList())
-                        {
-                            var matchingProd = GetMatchingProduct(existingProducts, importingProd, prodsLandingPage);
-
-                            var matchingProdAndDesc =
-                                allProductsAndDescriptions.FirstOrDefault(i => i.ProductID == importingProd.ProductID);
-
-                            if (matchingProdAndDesc != null)
-                            {
-                                //var matchingProdRaw = _sitecoreContext.GetItem<IProduct_Raw>(matchingProd.Id);
-                                var matchingProdRaw = _sitecoreContext.GetItem<IProduct>(matchingProd.Id);
-
-                                matchingProdRaw.Description_Raw = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
-                                //matchingProdRaw.Description = string.Format("<p>{0}</p>", matchingProdAndDesc.Description);
-
-                                _sitecoreContext.Save(matchingProdRaw);
                             }
                         }
                     }

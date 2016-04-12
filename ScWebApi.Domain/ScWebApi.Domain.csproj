@@ -72,6 +72,7 @@
     <Compile Include="DTOs\SearchResultsDTO.cs" />
     <Compile Include="Models\GlassModels.cs" />
     <Compile Include="Models\sitecore\templates\Common\Site_Extensions.cs" />
+    <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Home_Page_Extensions.cs" />
     <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Importer_Page_Extensions.cs" />
     <Compile Include="Models\sitecore\templates\ScWebApi\Pages\Products_Landing_Page_Extensions.cs" />
     <Compile Include="Models\sitecore\templates\ScWebApi\Shared_Content\Folders\Product_Categories_Folder_Extensions.cs" />

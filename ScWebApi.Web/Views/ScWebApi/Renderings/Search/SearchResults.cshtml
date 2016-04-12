@@ -9,11 +9,39 @@
 
 @{
     var product = ContextItem.GlassCast<IProducts_Landing_Page>().Children.FirstOrDefault() as IProduct;
+
+    var homepage = this.SitecoreContext.GetHomeItem<IHome_Page>();
+
+    var methodChildren = homepage.GetChildren().ToList();
+
+    var attributeChildren = homepage.InterfaceChildren.ToList();
 }
 
 @Editable(product, i => i.Description)
 
 <hr/>
+
+methodChildren.Count(): @methodChildren.Count
+
+<br/>
+
+@foreach (var child in methodChildren)
+{
+    var isSet = child != null;
+    
+    <div>isSet: @isSet</div>
+}
+
+<hr/>
+
+attributeChildren.Count(): @attributeChildren.Count
+
+@foreach (var child in attributeChildren)
+{
+    var isSet = child != null;
+
+    <div>isSet: @isSet</div>
+}
 
 <div class="row">
     <div class="col-sm-3">
